@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+  
+      <!-- Menu tab in the root menu  -->
+    <menuitem name="Meeting" id="menu_root" sequence="130" />
+
+    <!-- Action to open To-Do Task list-->
+    <act_window id="action_meeting_room" name="Meeting Room" res_model="meeting.room" view_mode="form" />
+    
+    <!-- Menu Item to open To-Do Task list -->
+    <menuitem id="menu_meeting_room" name="Meeting_Rooms" parent="menu_root" sequence="20" action="action_meeting_room" />
+
+
+    <!-- Meeting_Rooms Creation Form view -->
+    <record id="view_form_meeting_room" model="ir.ui.view">
+      <field name="name">meeting_room Form</field>
+      <field name="model">meeting.room</field>
+      <field name="view_mode">tree,form,graph</field>
+      <field name="arch" type="xml">
+        <form>
+          
+          <sheet>
+            <group name="group_top">
+              <group name="group_left">
+                <field name="name"/>
+                <field name="location"/>
+                <field name="capacity"/>
+                <field name="location"/>                                                
+              </group>              
+              <group name="group_right">                  
+                <field name="active" readonly="1"/>
+                <field name="wifi" />
+                <field name="AC" />
+                <field name="printer" />
+                <field name="projector" />                
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Action to open To-Do Task list-->
+    <act_window id="action_meeting_reservation" name="Meeting Reservation" res_model="room.reservation" view_mode="form" />
+    
+    <!-- Menu Item to open To-Do Task list -->
+    <menuitem id="menu_meeting_reservation" name="Meeting_Reservation" parent="menu_root" sequence="25" action="action_meeting_reservation" />
+
+    <!-- Meeting Rooms Reservation Form view -->
+   <record id="view_form_meeting_reservation" model ="ir.ui.view">
+    <field name="name">meeting_reservation Form</field>
+    <field name="model">room.reservation</field >
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group name="group_top">
+                    <group name="group_left">
+                        <field name="room_id"/>
+                        <field name="reservation_date"/>  
+                        <field name="user_id"/>                  
+                    </group>
+                    <group name="group_right">
+                        <field name="start_time"/>
+                        <field name="end_time"/>
+                    </group>
+                </group>
+            </sheet>
+        </form>    
+    </field> 
+   </record>
+
+
+  </data>
+</odoo>
